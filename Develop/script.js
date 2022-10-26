@@ -7,6 +7,8 @@ var blockTime;
 
 // Current date and time shown on Jumbotron
 
+// $(document).ready(function () {
+
 function dateDisplay() {
   var currentDate = moment().format('DD MMM YYYY [at] hh:mm:ss a');
   currentDateEl.text(currentDate);
@@ -16,26 +18,38 @@ setInterval(dateDisplay, 1000);
 
 
 
+$(".saveBtn").on("click", function () {
+  // sibling HTML description attribute changes
+  var event = $(this).siblings(".description").val();
+  // parent HTML id attribute 
+  var time = $(this).siblings().attr("id");
 
+  localStorage.setItem(event, time);
+
+})
+
+
+// timeBlock colors 
 function blockColors() {
+  var currentTime = moment().hour();
 
-  var currentTime = moment().format('hh:mm:ss a');
-
-  $(".time-block").each(function () {
-      blockTime = parseInt($(this).attr("id").split('-')[1]);
-
-        if (blockTime < currentTime) {
-          $(this).removeClass('future present');
-          $(this).addClass('past');
-        } else if (blockTime == currentTime) {
-          $(this).removeClass('future past');
-          $(this).addClass('present');
-        } else {
-          $(this).removeClass('present past');
-          $(this).addClass('future');
-        }
+  $(".time-block").each(function (index, element) {
+    const blockTime = $(this).data('hour');
+    const textarea = $('textarea', $(this));
+    console.log(textarea);
+    if (blockTime < currentTime) {
+      textarea.removeClass('future present');
+      textarea.addClass('past');
+    } else if (blockTime == currentTime) {
+      textarea.removeClass('future past');
+      textarea.addClass('present');
+    } else {
+      textarea.removeClass('present past');
+      textarea.addClass('future');
+    }
   })
 }
 
-blockColors();
+blockColors()
 
+// })
