@@ -6,13 +6,8 @@ var blockColors;
 var blockTime;
 var showEvents;
 
-var event = $(this).siblings('textarea').val();
-
 
 // Current date and time shown on Jumbotron
-
-// $(document).ready(function () {
-
 function dateDisplay() {
   var currentDate = moment().format('DD MMM YYYY [at] hh:mm:ss a');
   currentDateEl.text(currentDate);
@@ -33,28 +28,18 @@ $('.saveBtn').on('click', function () {
 
 })
 
-var userInput = localStorage.getItem(hour);
-$('textarea').val(userInput);
+// pulls the local server to the DOM while also ensuring it remains on the time block after page refresh
+function loadData() {
+  $('.time-block').each(function(index, element) {
+    const hour = $(element).data('hour');
+    const data = localStorage.getItem(hour);
+    $('textarea', $(element)).val(data);
+  });
+}
 
+loadData();
 
-
-    
-
-// }})}
-
-// showEvents();
-
-// function showEvents () {
-//   for(let i = 0; i < localStorage.length; i++) {
-//     $('textarea').each(function (i) {
-//       $(i).val(localStorage.getItem(localStorage.textarea));
-//     })
-//   }
-// }
-
-// showEvents ()
-
-// timeBlock colors 
+// timeBlock colors depending on the current time and block time
 function blockColors() {
   var currentTime = moment().hour();
 
