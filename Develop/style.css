@@ -69,3 +69,63 @@ textarea {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+@media (max-width: 768px) {
+  .jumbotron {
+      padding-top: 35px;
+  }
+
+  .jumbotron img {
+      width: 500px;
+  }
+
+  .container {
+      width: 95%;
+      max-width: none;
+  }
+
+  .row {
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .saveBtn {
+    border: 0;
+    border-radius: 0.25rem;
+    height: 50px;
+  }
+
+}  
+
+@media (max-width: 575px) {
+
+  #currentDay {
+      font-size: 18px;
+  }
+
+  .hour {
+      font-size: 15px;
+  }
+
+  button {
+      height: 40px;
+      width: 40px;
+  }
+
+  .row {
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .saveBtn {
+    border: 0;
+    border-radius: 0.25rem;
+    height: 50px;
+  }
+
+  textarea {
+    min-height: 85px;
+    border: 0;
+}
+
+}

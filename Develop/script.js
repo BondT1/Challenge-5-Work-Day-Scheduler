@@ -17,6 +17,7 @@ function dateDisplay() {
 
 setInterval(dateDisplay, 1000);
 
+var showEvents = localStorage.getItem('time');
 
 // saveBtn click listener - saves to local storage 
 $('.saveBtn').on('click', function () {
@@ -29,10 +30,12 @@ $('.saveBtn').on('click', function () {
 
 })
 
-function render () {}
-  localStorage.getItem('time');
 
-  render()
+
+
+ 
+
+$()
 // function showEvents () {
   
 // }
