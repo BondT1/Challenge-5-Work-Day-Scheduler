@@ -4,6 +4,7 @@ var currentDate;
 
 var blockColors;
 var blockTime;
+var showEvents;
 
 // Current date and time shown on Jumbotron
 
@@ -18,7 +19,7 @@ setInterval(dateDisplay, 1000);
 
 
 // saveBtn click listener - saves to local storage 
-$(".saveBtn").on("click", function () {
+$('.saveBtn').on('click', function () {
   // sibling HTML description attribute changes
   var event = $(this).siblings('textarea').val();
   // parent HTML id attribute 
@@ -28,6 +29,24 @@ $(".saveBtn").on("click", function () {
 
 })
 
+function render () {}
+  localStorage.getItem('time');
+
+  render()
+// function showEvents () {
+  
+// }
+
+
+// function showEvents () {
+//   for(let i = 0; i < data('hour'); i++) {
+//     $('textarea').each(function (i, j) {
+//       $(j).val(localStorage.getItem(data('hour')[i]));
+//     })
+//   }
+// }
+
+// showEvents ()
 
 // timeBlock colors 
 function blockColors() {
