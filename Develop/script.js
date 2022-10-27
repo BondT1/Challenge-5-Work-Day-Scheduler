@@ -6,6 +6,9 @@ var blockColors;
 var blockTime;
 var showEvents;
 
+var event = $(this).siblings('textarea').val();
+
+
 // Current date and time shown on Jumbotron
 
 // $(document).ready(function () {
@@ -17,11 +20,11 @@ function dateDisplay() {
 
 setInterval(dateDisplay, 1000);
 
-var showEvents = localStorage.getItem('time');
+
 
 // saveBtn click listener - saves to local storage 
 $('.saveBtn').on('click', function () {
-  // sibling HTML description attribute changes
+  // sibling HTML textarea attribute changes
   var event = $(this).siblings('textarea').val();
   // parent HTML id attribute 
   var time = $(this).parent().data('hour');
@@ -30,21 +33,21 @@ $('.saveBtn').on('click', function () {
 
 })
 
+var userInput = localStorage.getItem(hour);
+$('textarea').val(userInput);
 
 
 
- 
+    
 
-$()
+// }})}
+
+// showEvents();
+
 // function showEvents () {
-  
-// }
-
-
-// function showEvents () {
-//   for(let i = 0; i < data('hour'); i++) {
-//     $('textarea').each(function (i, j) {
-//       $(j).val(localStorage.getItem(data('hour')[i]));
+//   for(let i = 0; i < localStorage.length; i++) {
+//     $('textarea').each(function (i) {
+//       $(i).val(localStorage.getItem(localStorage.textarea));
 //     })
 //   }
 // }
@@ -71,6 +74,5 @@ function blockColors() {
   })
 }
 
-blockColors()
+blockColors();
 
-// })
