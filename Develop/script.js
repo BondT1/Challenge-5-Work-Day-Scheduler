@@ -17,14 +17,14 @@ function dateDisplay() {
 setInterval(dateDisplay, 1000);
 
 
-
+// saveBtn click listener - saves to local storage 
 $(".saveBtn").on("click", function () {
   // sibling HTML description attribute changes
-  var event = $(this).siblings(".description").val();
+  var event = $(this).siblings('textarea').val();
   // parent HTML id attribute 
-  var time = $(this).siblings().attr("id");
+  var time = $(this).parent().data('hour');
 
-  localStorage.setItem(event, time);
+  localStorage.setItem(time, event);
 
 })
 
@@ -36,7 +36,6 @@ function blockColors() {
   $(".time-block").each(function (index, element) {
     const blockTime = $(this).data('hour');
     const textarea = $('textarea', $(this));
-    console.log(textarea);
     if (blockTime < currentTime) {
       textarea.removeClass('future present');
       textarea.addClass('past');
