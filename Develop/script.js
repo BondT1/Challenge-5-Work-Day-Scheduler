@@ -6,6 +6,12 @@ var blockColors;
 var blockTime;
 var showEvents;
 
+var timeBlockTemplate = `<div class="row time-block">
+<label class="col-md-1 hour"></label>
+<textarea class="col-md-10" type="text"></textarea>
+<button class="btn saveBtn col-12 col-md-1" id="btn-4pm"><i class="fas fa-save"></i></button>
+</div>`;
+
 
 // Current date and time shown on Jumbotron
 function dateDisplay() {
@@ -13,12 +19,10 @@ function dateDisplay() {
   currentDateEl.text(currentDate);
 }
 
-setInterval(dateDisplay, 1000);
 
 
 
-// saveBtn click listener - saves to local storage 
-$('.saveBtn').on('click', function () {
+function save() {
   // sibling HTML textarea attribute changes
   var event = $(this).siblings('textarea').val();
   // parent HTML id attribute 
@@ -26,7 +30,34 @@ $('.saveBtn').on('click', function () {
 
   localStorage.setItem(time, event);
 
-})
+}
+ 
+
+
+function render(start, end) {
+  var container = $('#time-blocks');
+  
+
+  for (var i = start; i <= end ; i++) {
+    var timeBlock = $(timeBlockTemplate); 
+    var label = $('label', timeBlock);
+    var textArea = $('textarea', timeBlock);
+    var hour = (moment(i, 'h').format('h A'));
+    label.text(hour); 
+    textArea.attr("name", `time-${i}`);
+    
+    // saveBtn click listener - saves to local storage
+    $('.saveBtn', timeBlock).on('click', save);
+
+    // p.text(hour);
+    container.append(timeBlock);
+    timeBlock.data('hour', i);
+  }
+
+  
+}
+
+
 
 // pulls the local server to the DOM while also ensuring it remains on the time block after page refresh
 function loadData() {
@@ -37,7 +68,6 @@ function loadData() {
   });
 }
 
-loadData();
 
 // timeBlock colors depending on the current time and block time
 function blockColors() {
@@ -59,5 +89,11 @@ function blockColors() {
   })
 }
 
-blockColors();
+$(document).ready(function() {
+  setInterval(dateDisplay, 1000);
+  render(9, 17);
+  loadData(); 
+  blockColors();
+})
+
 
