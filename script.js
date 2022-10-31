@@ -1,3 +1,4 @@
+// variables used throughout the script
 var currentDateEl = $('#currentDay');
 var currentTime;
 var currentDate;
@@ -19,18 +20,16 @@ function dateDisplay() {
   currentDateEl.text(currentDate);
 }
 
-
-
-
 function save() {
   // sibling HTML textarea attribute changes
   var event = $(this).siblings('textarea').val();
   // parent HTML id attribute 
   var time = $(this).parent().data('hour');
-
+  // saves to local storage
   localStorage.setItem(time, event);
 }
 
+// renders the time blocks in JS instead of doing this in HTML
 function render(start, end) {
   var container = $('#time-blocks');
   
@@ -41,12 +40,11 @@ function render(start, end) {
     var textArea = $('textarea', timeBlock);
     var hour = (moment(i, 'h').format('h A'));
     label.text(hour); 
-    textArea.attr("name", `time-${i}`);
+    textArea.attr('name', `time-${i}`);
     
-    // saveBtn click listener - saves to local storage
+    // saveBtn click listener
     $('.saveBtn', timeBlock).on('click', save);
 
-    // p.text(hour);
     container.append(timeBlock);
     timeBlock.data('hour', i);
   } 
@@ -65,7 +63,7 @@ function loadData() {
 function blockColors() {
   var currentTime = moment().hour();
 
-  $(".time-block").each(function (index, element) {
+  $('.time-block').each(function (index, element) {
     const blockTime = $(this).data('hour');
     const textarea = $('textarea', $(this));
     if (blockTime < currentTime) {
@@ -81,6 +79,7 @@ function blockColors() {
   })
 }
 
+// calls functions
 $(document).ready(function() {
   setInterval(dateDisplay, 1000);
   render(9, 17);
