@@ -28,7 +28,7 @@ The current date and time is portrayed at the top of the work day scheduler, fol
 Simply type an event into these time blocks and click the blue save button to save your event to local storage. As a result, even if you refresh the work day scheduler, your event will remain on the time block. 
 
 
-![A screenshot of the deployed application](assets/screencapture-work-day-scheduler.png)
+![A screenshot of the deployed application](Assets/screencapture-work-day-scheduler.png)
 
 ## Credits
 
