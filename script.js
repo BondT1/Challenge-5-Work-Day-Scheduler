@@ -14,7 +14,7 @@ var timeBlockTemplate = `<div class="row time-block">
 </div>`;
 
 
-// Current date and time shown on Jumbotron
+// current date and time shown on Jumbotron
 function dateDisplay() {
   var currentDate = moment().format('DD MMM YYYY [at] hh:mm:ss a');
   currentDateEl.text(currentDate);
