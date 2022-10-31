@@ -29,10 +29,7 @@ function save() {
   var time = $(this).parent().data('hour');
 
   localStorage.setItem(time, event);
-
 }
- 
-
 
 function render(start, end) {
   var container = $('#time-blocks');
@@ -52,12 +49,8 @@ function render(start, end) {
     // p.text(hour);
     container.append(timeBlock);
     timeBlock.data('hour', i);
-  }
-
-  
+  } 
 }
-
-
 
 // pulls the local server to the DOM while also ensuring it remains on the time block after page refresh
 function loadData() {
@@ -67,7 +60,6 @@ function loadData() {
     $('textarea', $(element)).val(data);
   });
 }
-
 
 // timeBlock colors depending on the current time and block time
 function blockColors() {
